@@ -2,6 +2,9 @@
 import Layout from "../layouts/Layout.astro";
 import ProjectCard from "../components/ProjectCard.astro";
 import WorkCard from "../components/WorkCard.astro";
+import { supabase } from "../lib/supabase";
+
+const { data: works, error } = await supabase.from("works").select("*");
 ---
 
 <Layout title="Welcome to Astro.">
@@ -22,8 +25,7 @@ import WorkCard from "../components/WorkCard.astro";
       </div>
       <h2 class="text-lg">Titulo prueba 1</h2>
       <div class="flex items-center gap-2 flex-wrap">
-        <WorkCard />
-        <WorkCard />
+        {works?.map((work) => <WorkCard />)}
       </div>
       <h2 class="text-lg">Titulo prueba 2</h2>
       <ProjectCard />
