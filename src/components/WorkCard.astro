@@ -1,11 +1,13 @@
-<div
-  class=`flex flex-col items-center justify-center max-w-52 border px-4 py-2 rounded-md cursor-pointer
-  hover:shadow-[3px_3px_0px_1px_rgba(253,254,177,1)]
-  hover:border-secondary transition-all`
->
-  <p class="font-bold">Market</p>
-  <p class="max-w-xs text-xs text-center">
-    Lorem ipsum dolor sit amet consectetur adipisicing elit. Velit consequatur,
-    deserunt asperiores corrupti possimus deleniti neque in officia nesciunt cum
+---
+const { work } = Astro.props;
+
+const { title, sub_title, description } = work;
+---
+
+<div class="flex flex-col rounded-md cursor-pointer">
+  <p class="text-md">{title}</p>
+  <p class="text-xs text-gray-400">{sub_title}</p>
+  <p class="text-sm mt-2 text-gray-300">
+    {description}
   </p>
 </div>

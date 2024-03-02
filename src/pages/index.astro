@@ -4,34 +4,53 @@ import ProjectCard from "../components/ProjectCard.astro";
 import WorkCard from "../components/WorkCard.astro";
 import { supabase } from "../lib/supabase";
 
-const { data: works, error } = await supabase.from("works").select("*");
+const { data: works } = await supabase.from("works").select("*");
+const { data: personalProjects } = await supabase.from("projects").select("*");
 ---
 
 <Layout title="Welcome to Astro.">
   <main class="flex min-h-full flex-col items-center p-10 max-w-3xl mx-auto">
     <div class="flex flex-col gap-4">
-      <div class="mb-4">
-        <div class="flex justify-between items-center">
-          <h1 class="text-xl">Texto prueba 🖐️</h1>
-          <p class="text-xs text-gray-200">mail@gmail.com</p>
+      <div class="mb-4 sm:w-[38rem]">
+        <div
+          class="flex flex-col md:flex-row justify-between md:items-center mb-4 md:m-0"
+        >
+          <h1 class="text-2xl">Hi i´m Toni 🖐️</h1>
+          <div class="flex flex-col gap-2">
+            <div class="flex gap-3">
+              <a target="_blank" href="https://github.com/antonioGoeminne">
+                <img
+                  class="w-4 invert cursor-pointer hover:scale-125 transition-all"
+                  src="../src/git.png"
+                />
+              </a>
+              <a
+                target="_blank"
+                href="https://www.linkedin.com/in/antonio-goeminne-b760561b6/"
+              >
+                <img
+                  class="w-4 cursor-pointer hover:scale-125 transition-all"
+                  src="../src/linkedin.png"
+                />
+              </a>
+            </div>
+            <p class="text-xs text-gray-400">antonionicolas3003@gmail.com</p>
+          </div>
         </div>
 
         <p class="max-w-md text-gray-300 mt-2">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Iusto nam
-          accusantium doloremque accusamus iste sed enim neque tempore, pariatur
-          id sint iure! Inventore minus repellat ducimus. Ipsum soluta mollitia
-          quas.
+          I´m a full stack developer with focus on Next js, React js and Node
+          js. I think that everything in programming can be built with
+          enthusiasm, hard work and will.
         </p>
       </div>
-      <h2 class="text-lg">Titulo prueba 1</h2>
-      <div class="flex items-center gap-2 flex-wrap">
-        {works?.map((work) => <WorkCard />)}
+      <h2 class="text-xl mt-4 font-bold">Work</h2>
+      <div class="flex flex-col gap-12">
+        {works?.map((work) => <WorkCard work={work} />)}
       </div>
-      <h2 class="text-lg">Titulo prueba 2</h2>
-      <ProjectCard />
-      <ProjectCard />
-      <ProjectCard />
-      <ProjectCard />
+      <h2 class="text-xl mt-10 font-bold">Personal projects</h2>
+      {personalProjects?.map((project) => <ProjectCard project={project} />)}
     </div>
   </main>
 </Layout>
+0
