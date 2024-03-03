@@ -1,13 +1,20 @@
-<div
+---
+const { project } = Astro.props;
+const { title, sub_title, tech_stack, link } = project;
+---
+
+<a
+  target="_blank"
+  href={link}
   class="border px-4 py-3 rounded-md hover:shadow-xl hover:scale-105 transition-all"
 >
   <div class="flex flex-col gap-1 cursor-pointer">
-    <div class="flex justify-between">
+    <div class="flex flex-col gap-2 md:gap-0 md:flex-row justify-between">
       <div>
-        <p class="font-bold">Browk Ui / kit</p>
-        <p class="text-xs">CRUD api</p>
+        <p class="text-md">{title}</p>
+        <p class="text-xs text-gray-400">{sub_title}</p>
       </div>
-      <p class="text-sm text-gray-300">React - Firebase - Mongo DB</p>
+      <p class="text-sm text-gray-300">{tech_stack}</p>
       <svg
         xmlns="http://www.w3.org/2000/svg"
         fill="none"
@@ -23,4 +30,4 @@
       </svg>
     </div>
   </div>
-</div>
+</a>
