@@ -3,6 +3,9 @@ import Layout from "../layouts/Layout.astro";
 import ProjectCard from "../components/ProjectCard.astro";
 import WorkCard from "../components/WorkCard.astro";
 import { supabase } from "../lib/supabase";
+import { Image } from "astro:assets";
+import linkedin from "../linkedin.png";
+import github from "../git.png";
 
 const { data: works } = await supabase.from("works").select("*");
 const { data: personalProjects } = await supabase.from("projects").select("*");
@@ -18,19 +21,28 @@ const { data: personalProjects } = await supabase.from("projects").select("*");
           <h1 class="text-2xl">Hi i´m Toni 🖐️</h1>
           <div class="flex flex-col gap-2">
             <div class="flex gap-3">
-              <a target="_blank" href="https://github.com/antonioGoeminne">
-                <img
-                  class="w-4 invert cursor-pointer hover:scale-125 transition-all"
-                  src="../src/git.png"
+              <a
+                class="hover:scale-125 transition-all"
+                target="_blank"
+                href="https://github.com/antonioGoeminne"
+              >
+                <Image
+                  width={"20"}
+                  height={"20"}
+                  src={github}
+                  alt="github-profile"
                 />
               </a>
               <a
+                class="hover:scale-125 transition-all"
                 target="_blank"
                 href="https://www.linkedin.com/in/antonio-goeminne-b760561b6/"
               >
-                <img
-                  class="w-4 cursor-pointer hover:scale-125 transition-all"
-                  src="../src/linkedin.png"
+                <Image
+                  width={"20"}
+                  height={"20"}
+                  alt="linkedin-profile"
+                  src={linkedin}
                 />
               </a>
             </div>
