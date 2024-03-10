@@ -3,53 +3,16 @@ import Layout from "../layouts/Layout.astro";
 import ProjectCard from "../components/ProjectCard.astro";
 import WorkCard from "../components/WorkCard.astro";
 import { supabase } from "../lib/supabase";
-import { Image } from "astro:assets";
-import linkedin from "../linkedin.png";
-import github from "../git.png";
+import Header from "../components/Header.astro";
 
 const { data: works } = await supabase.from("works").select("*");
 const { data: personalProjects } = await supabase.from("projects").select("*");
 ---
 
-<Layout title="Portfolio | Toni">
-  <main class="flex min-h-full flex-col items-center p-10 max-w-3xl mx-auto">
+<Layout title="Portfolio | Toni" route="home">
+  <main class="w-full">
     <div class="flex flex-col gap-4">
       <div class="mb-4 sm:w-[38rem]">
-        <div
-          class="flex flex-col md:flex-row justify-between md:items-center mb-4 md:m-0"
-        >
-          <h1 class="text-2xl">Hi i´m Toni 🖐️</h1>
-          <div class="flex flex-col gap-2">
-            <div class="flex gap-3">
-              <a
-                class="hover:scale-125 transition-all"
-                target="_blank"
-                href="https://github.com/antonioGoeminne"
-              >
-                <Image
-                  width={"20"}
-                  height={"20"}
-                  src={github}
-                  alt="github-profile"
-                />
-              </a>
-              <a
-                class="hover:scale-125 transition-all"
-                target="_blank"
-                href="https://www.linkedin.com/in/antonio-goeminne-b760561b6/"
-              >
-                <Image
-                  width={"20"}
-                  height={"20"}
-                  alt="linkedin-profile"
-                  src={linkedin}
-                />
-              </a>
-            </div>
-            <p class="text-xs text-gray-400">antonionicolas3003@gmail.com</p>
-          </div>
-        </div>
-
         <p class="max-w-md text-gray-300 mt-2">
           I´m a full stack developer with focus on Next js, React js and Node
           js. I think that everything in programming can be built with

@@ -1,0 +1,26 @@
+---
+import Layout from "../../layouts/Layout.astro";
+const allPosts = await Astro.glob("../../pages/blog/*.md");
+---
+
+<Layout title="Blog | Toni" route="blog">
+  <ul class="w-full my-20 flex flex-col gap-8">
+    {
+      allPosts.map((post) => (
+        <li>
+          <a class="cursor-pointer" href={post.url}>
+            <div class="flex flex-col gap-2">
+              <p class="text-xl text-secondary">{post.frontmatter.title}</p>
+              <p class="text-xs text-gray-400">
+                {post.frontmatter.created_date}
+              </p>
+              <p class="text-xs max-w-sm text-gray-300">
+                {post.frontmatter.description}
+              </p>
+            </div>
+          </a>
+        </li>
+      ))
+    }
+  </ul>
+</Layout>

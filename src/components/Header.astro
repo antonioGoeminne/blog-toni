@@ -1,0 +1,81 @@
+---
+import { Image } from "astro:assets";
+import linkedin from "../linkedin.png";
+import github from "../git.png";
+
+const { route } = Astro.props;
+---
+
+<div
+  class="flex flex-col w-full md:flex-row justify-between flex-1 md:items-center mb-4 md:m-0"
+>
+  <div class="flex gap-2 items-center">
+    <h1 class="text-2xl w-full text-nowrap flex-1">
+      {route !== "home" ? "Blog" : "Hi i´m Toni 🖐️"}
+    </h1>
+    <div class="flex gap-2 ml-8">
+      <a href="/">
+        <p
+          class={`cursor-pointer  hover:text-gray-300  active:scale-110  ${route === "home" ? "text-white" : "text-gray-400"}`}
+        >
+          Home
+        </p>
+      </a>
+      <p>/</p>
+      <a href="/blog">
+        <p
+          class={`cursor-pointer  hover:text-gray-300  active:scale-110 ${route !== "home" ? "text-white" : "text-gray-400"}`}
+        >
+          Blog
+        </p>
+      </a>
+    </div>
+  </div>
+  <div class="flex flex-col gap-2">
+    <div class="flex gap-3">
+      <a
+        class="hover:scale-125 transition-all"
+        target="_blank"
+        href="https://github.com/antonioGoeminne"
+      >
+        <Image width={"20"} height={"20"} src={github} alt="github-profile" />
+      </a>
+      <a
+        class="hover:scale-125 transition-all"
+        target="_blank"
+        href="https://www.linkedin.com/in/antonio-goeminne-b760561b6/"
+      >
+        <Image
+          width={"20"}
+          height={"20"}
+          alt="linkedin-profile"
+          src={linkedin}
+        />
+      </a>
+    </div>
+    <p class="text-xs text-gray-400">antonionicolas3003@gmail.com</p>
+  </div>
+</div>
+{
+  route !== "home" && route !== "blog" && (
+    <div
+      onclick="(() => (history.length === 1) ? window.location = '/' : history.back())()"
+      class="w-full mt-10 mb-6 flex gap-2 cursor-pointer"
+    >
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke-width="1.5"
+        stroke="currentColor"
+        class="w-6 h-6"
+      >
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          d="M10.5 19.5 3 12m0 0 7.5-7.5M3 12h18"
+        />
+      </svg>
+    </div>
+  )
+}

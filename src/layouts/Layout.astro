@@ -1,9 +1,12 @@
 ---
+import Header from "../components/Header.astro";
+
 interface Props {
   title: string;
+  route: string;
 }
-
-const { title } = Astro.props;
+import { ViewTransitions } from "astro:transitions";
+const { title, route } = Astro.props;
 ---
 
 <!doctype html>
@@ -13,41 +16,91 @@ const { title } = Astro.props;
     <meta name="description" content="Astro description" />
     <meta name="viewport" content="width=device-width" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link href="prism-atom-dark.css" rel="stylesheet" />
     <meta name="generator" content={Astro.generator} />
     <title>{title}</title>
+
+    <ViewTransitions />
   </head>
-  <body>
+  <body class="flex min-h-full flex-col items-center p-10 max-w-3xl mx-auto">
+    <Header route={route} />
     <slot />
+    <style is:global>
+      :root {
+        --accent: 136, 58, 234;
+        --accent-light: 224, 204, 250;
+        --accent-dark: 49, 10, 101;
+        --accent-gradient: linear-gradient(
+          45deg,
+          rgb(var(--accent)),
+          rgb(var(--accent-light)) 30%,
+          white 60%
+        );
+      }
+      html {
+        font-family: roboto, sans-serif;
+        background: #212737;
+        color: #e5e7eb;
+        background-size: 224px;
+        user-select: none;
+      }
+      code {
+        font-family:
+          Menlo,
+          Monaco,
+          Lucida Console,
+          Liberation Mono,
+          DejaVu Sans Mono,
+          Bitstream Vera Sans Mono,
+          Courier New,
+          monospace;
+      }
+      h1 {
+        font-size: 2rem;
+        margin-top: 0.5rem;
+        margin-bottom: 0.5rem;
+        font-weight: bold;
+        width: 100%;
+        text-align: left;
+      }
+
+      h2 {
+        width: 100%;
+        text-align: left;
+        font-size: 1.5rem;
+        margin-top: 3rem;
+        margin-bottom: 0.5rem;
+        font-weight: bold;
+      }
+
+      h3 {
+        width: 100%;
+        text-align: left;
+        margin-top: 3rem;
+        margin-bottom: 0.5rem;
+        font-size: 1.2rem;
+        font-weight: bold;
+      }
+
+      p {
+        text-align: left;
+        width: 100%;
+        line-height: 2;
+      }
+      pre {
+        align-self: flex-start;
+        margin-top: 2rem;
+        padding: 1rem;
+        border-radius: 20px;
+        max-width: 100%;
+        margin-bottom: 2rem;
+      }
+
+      hr {
+        width: 100%;
+        margin-top: 2rem;
+        margin-bottom: 2rem;
+      }
+    </style>
   </body>
 </html>
-<style is:global>
-  :root {
-    --accent: 136, 58, 234;
-    --accent-light: 224, 204, 250;
-    --accent-dark: 49, 10, 101;
-    --accent-gradient: linear-gradient(
-      45deg,
-      rgb(var(--accent)),
-      rgb(var(--accent-light)) 30%,
-      white 60%
-    );
-  }
-  html {
-    font-family: roboto, sans-serif;
-    background: #0d0d18;
-    color: #e5e7eb;
-    background-size: 224px;
-    user-select: none;
-  }
-  code {
-    font-family:
-      Menlo,
-      Monaco,
-      Lucida Console,
-      Liberation Mono,
-      DejaVu Sans Mono,
-      Bitstream Vera Sans Mono,
-      Courier New,
-      monospace;
-  }
-</style>
