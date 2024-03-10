@@ -10,7 +10,9 @@ const allPosts = await Astro.glob("../../pages/blog/*.md");
         <li>
           <a class="cursor-pointer" href={post.url}>
             <div class="flex flex-col gap-2">
-              <p class="text-xl text-secondary">{post.frontmatter.title}</p>
+              <p class="text-xl text-secondary max-w-lg">
+                {post.frontmatter.title}
+              </p>
               <p class="text-xs text-gray-400">
                 {post.frontmatter.created_date}
               </p>

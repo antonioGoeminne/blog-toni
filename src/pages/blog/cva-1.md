@@ -2,10 +2,10 @@
 layout: ../../layouts/Layout.astro
 description: Como considero actualmente la forma más comoda y divertida en la que se puede crear un componente con sus variantes para un design system.
 created_date: 09/03/2024
-title: Crear variantes con cva
+title: Construyendo Componentes Flexibles y Personalizables con CVA | Un Enfoque Práctico para Diseñar Sistemas
 ---
 
-# Crear variantes con cva
+# Construyendo Componentes Flexibles y Personalizables con CVA | Un Enfoque Práctico para Diseñar Sistemas
 
 _09/03/2024_
 
@@ -56,7 +56,10 @@ Una herramienta simple y poderosa. Te permite crear condicionales de manera muy 
 
 ```js
 const condicion1 = true;
-const valor = clsx({ "clase-1": condicion1 }, { "clase-2": false });
+const valor = clsx(
+      { "clase-1": condicion1 },
+      { "clase-2": false }
+    );
 
 // valor = 'clase1'
 ```
@@ -122,13 +125,13 @@ interface badgeProps
 }
 
 export const Badge = (props: badgeProps) => {
-  const { className, label, variant, size } = props;
+const { className, label, variant, size } = props;
 
-  return (
-    <div className={cn(badgeVariants({ className, variant, size }))}>
-      {label}
-    </div>
-  );
+return (
+  <div className={cn(badgeVariants({ className, variant, size }))}>
+    {label}
+  </div>
+);
 };
 ```
 
@@ -141,7 +144,7 @@ Dividamos en 3 partes el código. Primero estamos definiendo la interfaz de Type
 Por último, podemos usarlo de esta manera:
 
 ```ts
-<Badge label="Your client" variant={"secondary"} className="mx-auto" />
+<Badge label="client" variant={"secondary"} className="mx-auto" />
 ```
 
 ![badge ui](https://imgur.com/O2cbscM.jpg)
@@ -149,5 +152,5 @@ Por último, podemos usarlo de esta manera:
 ## Conclusión
 
 Este componente es funcional para SSR sin problema, y es 100% personalizable para cualquier sistema de diseño. En caso de que tengas que hacer un dashboard que sea client side recomiendo ir por opciones más pre armadas como alguna libreria de diseño, siempre y cuando no sea algo muy personalizable.
-En caso de que gustes ver más ejemplos te invito a visitar este repo en mi github donde armo un design system con algunos componentes de un figma público.
+En caso de que gustes ver más ejemplos te invito a visitar este repo en mi [github](https://github.com/antonioGoeminne/Browk-UI-KIT) donde armo un design system con algunos componentes de un figma público.
 Agradezco mucho que hayas llegado hasta aca y nos vemos pronto!
